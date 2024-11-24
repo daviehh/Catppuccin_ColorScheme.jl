@@ -48,7 +48,8 @@ open("catppuccin_scheme.jl", "w") do fhandle
 
         write(fhandle, string("loadcolorscheme(:$(schemename), [\n"))
         for c in cs.colors
-            write(fhandle, string("\t$(c), \n"))
+            color_str = string("\t$(c), \n")
+            write(fhandle, replace(color_str, "{Float64}" => ""))
         end
         write(fhandle, string("], \"$(category)\", \"$(notes)\")"))
 

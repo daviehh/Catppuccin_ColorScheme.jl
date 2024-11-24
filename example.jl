@@ -1,4 +1,4 @@
-using ColorSchemes
+using ColorSchemes, Colors
 using CairoMakie
 
 include("catppuccin_scheme.jl")
