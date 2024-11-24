@@ -1,4 +1,4 @@
-Catppuccin color scheme for julia
+[Catppuccin](https://github.com/catppuccin) color scheme for julia
 -
 Conversion script for ColorSchemes.jl
 
