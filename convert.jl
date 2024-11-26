@@ -30,11 +30,11 @@ d = JSON.parsefile("palette.json")
 function parse_colors(d, n)
     data = d[n]["colors"]
     c = [parse(Colorant, v["hex"]) for (_, v) in data]
-    csch = make_colorscheme(c, length(c))
-    sortcolorscheme(csch, rev=true)
+    idx = sortperm([v["order"] for (_, v) in data])
+    c[idx]
 end
 
-color_palette_ns = ["mocha", "latte", "frappe", "macchiato"]
+color_palette_ns = ["latte", "frappe", "macchiato", "mocha"]
 
 # https://github.com/JuliaGraphics/ColorSchemeTools.jl/blob/630c3ac8d57c5408cd19cf072904c97245409f57/src/ColorSchemeTools.jl#L242
 
@@ -42,14 +42,14 @@ open("catppuccin_scheme.jl", "w") do fhandle
     for clrs in color_palette_ns
 
         cs = parse_colors(d, clrs)
-        schemename = "catppuccin_$clrs"
-        category = "catppuccin"
-        notes = ""
+        schemename = "Catppuccin_$clrs"
+        category = "Catppuccin"
+        notes = "Catppuccin theme: $clrs flavor."
 
         write(fhandle, string("loadcolorscheme(:$(schemename), [\n"))
-        for c in cs.colors
+        for c in cs
             color_str = string("\t$(c), \n")
-            write(fhandle, replace(color_str, "{Float64}" => ""))
+            write(fhandle, color_str)
         end
         write(fhandle, string("], \"$(category)\", \"$(notes)\")"))
 
