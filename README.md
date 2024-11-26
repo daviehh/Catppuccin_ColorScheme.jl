@@ -2,7 +2,9 @@
 -
 Conversion script for ColorSchemes.jl
 
-Refer to example.jl for usage
+`convert.jl` is the conversion script
+
+Refer to `example.jl` for sample plot
 
 ![example](example_mocha.png)
 
